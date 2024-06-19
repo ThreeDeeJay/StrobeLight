@@ -54,7 +54,7 @@ jobs:
       uses: seanmiddleditch/gha-setup-vsdevenv@v4
 
     - name: Upgrade
-      run: devenv.exe /upgrade ${{env.Solution}}
+      run: devenv ${{env.Solution}} /upgrade
 
     - name: Build
       run: msbuild /m ${{env.Solution}} #/p:Configuration="${{env.Configuration}}" /p:Platform="${{env.Platform}}"
