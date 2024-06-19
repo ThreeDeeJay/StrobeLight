@@ -1,7 +1,7 @@
 name: Build
 
 env:
-  Solution: .
+  Solution: strobelight-setup.sln
   Platform: #Any CPU|Win32|x64
   Configuration: Release
   Artifacts: build/$Configuration
@@ -49,6 +49,9 @@ jobs:
     - name: Restore NuGet packages
       working-directory: ${{env.GITHUB_WORKSPACE}}
       run: nuget restore ${{env.Solution}}
+
+    - name: Setup VS Dev Environment
+      uses: seanmiddleditch/gha-setup-vsdevenv@v4
 
     - name: Build
       run: |
