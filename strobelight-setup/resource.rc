@@ -1,0 +1,33 @@
+/* Includes *****************************************************************/
+
+#include "stdafx.h"
+
+/* Dialogs ******************************************************************/
+
+IDD_MAIN DIALOG 0, 0, 150, 254
+CAPTION STROBELIGHT_VERSION
+FONT 9, _T("Segoe UI")
+STYLE DS_CENTER | DS_MODALFRAME | WS_SYSMENU
+BEGIN
+	LTEXT			_T("Strobelight Setup"), IDC_TITLE, 8, 8, 134, 24
+	LTEXT			_T("This will install the refresh rates necessary to enable backlight strobing."), IDC_STATIC, 8, 32, 134, 16
+	GROUPBOX		_T("Choose a display"), IDC_STATIC, 8, 56, 134, 72
+	COMBOBOX		IDC_DISPLAY, 16, 70, 118, 14, CBS_DROPDOWNLIST | WS_TABSTOP
+	LTEXT			_T("Displays are consolidated by name.\nAn asterisk (*) indicates saved changes."), IDC_STATIC, 16, 88, 122, 16
+	AUTOCHECKBOX	_T(" Reset this display (uninstall) "), IDC_RESET, 16, 112, 118, 8
+	GROUPBOX		_T("Choose refresh rates"), IDC_STATIC, 8, 136, 134, 88
+	AUTOCHECKBOX	_T(" 120 Hz (strobed) "), IDC_120_STROBED, 16, 160, 64, 8
+	AUTOCHECKBOX	_T(" 110 Hz (strobed) "), IDC_110_STROBED, 16, 168, 64, 8
+	AUTOCHECKBOX	_T(" 100 Hz (strobed) "), IDC_100_STROBED, 16, 176, 64, 8
+	AUTOCHECKBOX	_T(" 144 Hz "), IDC_144, 92, 152, 34, 8
+	AUTOCHECKBOX	_T(" 121 Hz "), IDC_120, 92, 160, 34, 8
+	AUTOCHECKBOX	_T(" 111 Hz "), IDC_110, 92, 168, 34, 8
+	AUTOCHECKBOX	_T(" 101 Hz "), IDC_100, 92, 176, 34, 8
+	AUTOCHECKBOX	_T(" 60 Hz "), IDC_60, 92, 184, 34, 8
+	//LTEXT			_T("Include a non-strobed refresh rate if you want to toggle backlight strobing."), IDC_STATIC, 16, 200, 118, 16
+	LTEXT			_T("Select a non-strobed refresh rate above\n60 Hz if you want to toggle strobing."), IDC_STATIC, 16, 200, 122, 16
+	DEFPUSHBUTTON	_T("Install refresh rates"), IDOK, 8, 232, 80, 14
+	PUSHBUTTON		_T("Cancel"), IDCANCEL, 92, 232, 50, 14
+END
+
+/****************************************************************************/
