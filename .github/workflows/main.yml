@@ -4,7 +4,7 @@ env:
   Solution: strobelight-setup.sln
   Platform: #Any CPU|Win32|x64
   Configuration: Release
-  Artifacts: build/$Configuration
+  Artifacts: $Configuration
   Branch: $env:GITHUB_REF_NAME
   
 on:
@@ -46,15 +46,15 @@ jobs:
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v1.0.2
 
-    - name: Restore NuGet packages
-      working-directory: ${{env.GITHUB_WORKSPACE}}
-      run: nuget restore ${{env.Solution}}
-
     - name: Setup VS Dev Environment
       uses: seanmiddleditch/gha-setup-vsdevenv@v4
 
     - name: Upgrade
-      run: vcupgrade.exe ${{env.Solution}}
+      run: devenv.exe /upgrade ${{env.Solution}}
+
+    - name: Restore NuGet packages
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      run: nuget restore ${{env.Solution}}
 
     - name: Build
       run: msbuild /m ${{env.Solution}} #/p:Configuration="${{env.Configuration}}" /p:Platform="${{env.Platform}}"
