@@ -53,10 +53,11 @@ jobs:
     - name: Setup VS Dev Environment
       uses: seanmiddleditch/gha-setup-vsdevenv@v4
 
+    - name: Upgrade
+      run: devenv.exe /upgrade ${{env.Solution}}
+
     - name: Build
-      run: |
-        devenv.exe /upgrade ${{env.Solution}}
-        msbuild /m ${{env.Solution}} #/p:Configuration="${{env.Configuration}}" /p:Platform="${{env.Platform}}"
+      run: msbuild /m ${{env.Solution}} #/p:Configuration="${{env.Configuration}}" /p:Platform="${{env.Platform}}"
 
     - name: Upload Installer Artifact to GitHub
       uses: actions/upload-artifact@v2
